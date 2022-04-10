@@ -8,7 +8,9 @@ import android.os.Bundle;
 import android.widget.LinearLayout;
 
 import com.example.food_app.Adapter.CategoriesAdapter;
+import com.example.food_app.Adapter.PopularAdapter;
 import com.example.food_app.Domain.Categories;
+import com.example.food_app.Domain.Popular;
 import com.example.food_app.R;
 
 import java.util.ArrayList;
@@ -16,7 +18,8 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private CategoriesAdapter categoryAdapter;
-    private RecyclerView recyclerViewCategory;
+    private PopularAdapter popularAdapter;
+    private RecyclerView recyclerViewCategory,recyclerViewPopular;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +27,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         recyclerViewCategory();
+        recyclerViewPopular();
+    }
+
+    private void recyclerViewPopular() {
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
+        recyclerViewPopular = (RecyclerView) findViewById(R.id.recyclerViewPopular);
+        recyclerViewPopular.setLayoutManager(linearLayoutManager);
+        List<Popular> list = new ArrayList<>();
+        list.add(new Popular("Pepperoni pizza","9.76",R.drawable.pizza1));
+        list.add(new Popular("Vegetable pizza","8.5",R.drawable.pizza2));
+        list.add(new Popular("Cheese Burger","8.79",R.drawable.burger));
+
+        popularAdapter = new PopularAdapter(list,this);
+        recyclerViewPopular.setAdapter(popularAdapter);
     }
 
     private void recyclerViewCategory() {

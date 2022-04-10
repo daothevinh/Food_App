@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Food_App">
         <activity
+            android:name=".Activity.DescriptionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.CartActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activity.IntroActivity"
             android:exported="true">
             <intent-filter>
@@ -20,9 +26,7 @@
         </activity>
         <activity
             android:name=".Activity.MainActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true" />
     </application>
 
 </manifest>
