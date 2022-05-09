@@ -21,7 +21,14 @@ public class DescriptionActivity extends AppCompatActivity {
     private Button btnAddToCartDescription;
     private int number = 1;
     private float price = 1;
+
+    public void setAnIChangeData(IChangeData anIChangeData) {
+        this.anIChangeData = anIChangeData;
+    }
+
     private IChangeData anIChangeData;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +40,8 @@ public class DescriptionActivity extends AppCompatActivity {
         Popular popular = (Popular) bundle.getSerializable("object_popular");
 
         connect();
+
+
 
         txtTitleDescription.setText(popular.getpTitle());
         txtDollarDescription.setText(popular.getpPrice() + " $");
@@ -67,6 +76,7 @@ public class DescriptionActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                anIChangeData.changeData(popular);
                 Toast.makeText(DescriptionActivity.this, "added to cart", Toast.LENGTH_SHORT).show();
             }
         });

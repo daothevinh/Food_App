@@ -89,5 +89,5 @@
         android:text="Add to Cart"
         android:textColor="#fff"
         android:textSize="15sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"/>
 </RelativeLayout>
