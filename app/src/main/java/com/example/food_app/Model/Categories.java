@@ -1,4 +1,4 @@
-package com.example.food_app.Domain;
+package com.example.food_app.Model;
 
 public class Categories {
     String cTitle;

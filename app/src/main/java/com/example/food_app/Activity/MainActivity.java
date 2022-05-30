@@ -11,9 +11,8 @@ import android.widget.LinearLayout;
 
 import com.example.food_app.Adapter.CategoriesAdapter;
 import com.example.food_app.Adapter.PopularAdapter;
-import com.example.food_app.Adapter.SelectedProductsAdapter;
-import com.example.food_app.Domain.Categories;
-import com.example.food_app.Domain.Popular;
+import com.example.food_app.Model.Categories;
+import com.example.food_app.Model.Popular;
 import com.example.food_app.R;
 
 import java.util.ArrayList;

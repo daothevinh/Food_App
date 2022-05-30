@@ -14,7 +14,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.food_app.Activity.DescriptionActivity;
-import com.example.food_app.Domain.Popular;
+import com.example.food_app.Model.Popular;
 import com.example.food_app.R;
 
 import java.util.List;

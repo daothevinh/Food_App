@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.food_app.Domain.Popular;
+import com.example.food_app.Model.Popular;
 import com.example.food_app.IChangeData;
 import com.example.food_app.R;
 
@@ -22,9 +22,9 @@ public class DescriptionActivity extends AppCompatActivity {
     private int number = 1;
     private float price = 1;
 
-    public void setAnIChangeData(IChangeData anIChangeData) {
-        this.anIChangeData = anIChangeData;
-    }
+//    public void setAnIChangeData(IChangeData anIChangeData) {
+//        this.anIChangeData = anIChangeData;
+//    }
 
     private IChangeData anIChangeData;
 
@@ -75,8 +75,7 @@ public class DescriptionActivity extends AppCompatActivity {
         btnAddToCartDescription.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                anIChangeData.changeData(popular);
+                CartManager.instant().addNewProduct(popular);
                 Toast.makeText(DescriptionActivity.this, "added to cart", Toast.LENGTH_SHORT).show();
             }
         });

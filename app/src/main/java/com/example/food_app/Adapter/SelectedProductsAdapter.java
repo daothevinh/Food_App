@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.food_app.Domain.Popular;
+import com.example.food_app.Model.Popular;
 import com.example.food_app.R;
 
 import java.util.List;
@@ -27,6 +27,9 @@ public class SelectedProductsAdapter extends RecyclerView.Adapter<SelectedProduc
     @NonNull
     @Override
     public SelectedProductsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        if(context==null){
+            context = parent.getContext();
+        }
         View view = LayoutInflater.from(context).inflate(R.layout.selected_products_adapter,parent,false);
         return new SelectedProductsViewHolder(view);
     }
@@ -38,7 +41,8 @@ public class SelectedProductsAdapter extends RecyclerView.Adapter<SelectedProduc
             return;
         }
         holder.imgSelectProduct.setImageResource(popular.getpImage());
-        holder.txtNumber.setText(popular.getNumberOder());
+        String holderString = popular.getNumberOder()+"";
+        holder.txtNumber.setText(holderString);
     }
 
     @Override
