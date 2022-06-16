@@ -14,17 +14,17 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.food_app.Activity.DescriptionActivity;
-import com.example.food_app.Model.Popular;
+import com.example.food_app.Model.Products;
 import com.example.food_app.R;
 
 import java.util.List;
 
 public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.popularViewHolder> {
-    List<Popular> popularList;
+    List<Products> productsList;
     Context context;
 
-    public PopularAdapter(List<Popular> popularList, Context context) {
-        this.popularList = popularList;
+    public PopularAdapter(List<Products> productsList, Context context) {
+        this.productsList = productsList;
         this.context = context;
     }
 
@@ -37,17 +37,17 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.popularV
 
     @Override
     public void onBindViewHolder(@NonNull popularViewHolder holder, int position) {
-        Popular popular = popularList.get(position);
+        Products products = productsList.get(position);
 
-        holder.txtTitle.setText(popular.getpTitle());
-        holder.txtPrice.setText(popular.getpPrice());
-        holder.imgPopular.setImageResource(popular.getpImage());
+        holder.txtTitle.setText(products.getpFoodName());
+        holder.txtPrice.setText(products.getpPrice());
+        holder.imgPopular.setImageResource(products.getpImage());
         holder.clickAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, DescriptionActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("object_popular", popular);
+                bundle.putSerializable("product", products);
                 intent.putExtras(bundle);
                 context.startActivity(intent);
             }
@@ -56,8 +56,8 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.popularV
 
     @Override
     public int getItemCount() {
-        if (popularList != null) {
-            return popularList.size();
+        if (productsList != null) {
+            return productsList.size();
         }
         return 0;
     }

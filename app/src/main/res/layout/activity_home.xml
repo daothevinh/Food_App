@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:focusableInTouchMode="true"
-    tools:context=".Activity.MainActivity">
+    tools:context=".Activity.HomeActivity">
 
     <ScrollView
         android:id="@+id/scrollView2"

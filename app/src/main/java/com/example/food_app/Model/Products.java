@@ -2,15 +2,15 @@ package com.example.food_app.Model;
 
 import java.io.Serializable;
 
-public class Popular implements Serializable {
-    private String pTitle;
+public class Products implements Serializable {
+    private String pFoodName;
     private String pPrice;
     private int pImage;
     private int numberOder;
 
 
-    public Popular(String pTitle, String pPrice, int pImage) {
-        this.pTitle = pTitle;
+    public Products(String pFoodName, String pPrice, int pImage) {
+        this.pFoodName = pFoodName;
         this.pPrice = pPrice;
         this.pImage = pImage;
     }
@@ -24,12 +24,12 @@ public class Popular implements Serializable {
     }
 
 
-    public String getpTitle() {
-        return pTitle;
+    public String getpFoodName() {
+        return pFoodName;
     }
 
-    public void setpTitle(String pTitle) {
-        this.pTitle = pTitle;
+    public void setpFoodName(String pFoodName) {
+        this.pFoodName = pFoodName;
     }
 
     public String getpPrice() {

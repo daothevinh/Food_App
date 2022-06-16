@@ -1,6 +1,7 @@
 package com.example.food_app.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,8 +9,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.food_app.Activity.Product_Activity;
 import com.example.food_app.Model.Categories;
 import com.example.food_app.R;
 
@@ -40,6 +43,18 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.ca
         Categories category = categoriesList.get(position);
         holder.txtCategory.setText(category.getcTitle());
         holder.imgCategory.setImageResource(category.getcImage());
+
+        if(category == null){
+            return;
+        }
+        holder.iconProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(cContext, Product_Activity.class);
+                intent.putExtra("name_object",category.getcTitle());
+                cContext.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -53,11 +68,13 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.ca
     public class categoriesViewHolder extends RecyclerView.ViewHolder {
         ImageView imgCategory;
         TextView txtCategory;
+        CardView iconProduct;
 
         public categoriesViewHolder(@NonNull View itemView) {
             super(itemView);
             imgCategory = (ImageView) itemView.findViewById(R.id.imageCategory);
             txtCategory = (TextView) itemView.findViewById(R.id.textViewCategory);
+            iconProduct = (CardView) itemView.findViewById(R.id.iconProduct);
         }
     }
 }

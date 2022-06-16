@@ -1,7 +1,8 @@
 package com.example.food_app;
 
-import com.example.food_app.Model.Popular;
+import com.example.food_app.Model.Products;
 
 public interface IChangeData {
-    public void changeData(Popular popular);
+    void productPayment();
+    void removeProduct(Products products);
 }

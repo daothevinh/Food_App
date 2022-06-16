@@ -10,8 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.food_app.Model.Popular;
-import com.example.food_app.IChangeData;
+import com.example.food_app.Model.Products;
 import com.example.food_app.R;
 
 public class DescriptionActivity extends AppCompatActivity {
@@ -22,11 +21,7 @@ public class DescriptionActivity extends AppCompatActivity {
     private int number = 1;
     private float price = 1;
 
-//    public void setAnIChangeData(IChangeData anIChangeData) {
-//        this.anIChangeData = anIChangeData;
-//    }
 
-    private IChangeData anIChangeData;
 
 
 
@@ -37,24 +32,25 @@ public class DescriptionActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-        Popular popular = (Popular) bundle.getSerializable("object_popular");
+        Products products = (Products) bundle.getSerializable("product");
 
         connect();
 
 
 
-        txtTitleDescription.setText(popular.getpTitle());
-        txtDollarDescription.setText(popular.getpPrice() + " $");
-        imgFoodDescription.setImageResource(popular.getpImage());
-        number = popular.getNumberOder();
-        price = Float.parseFloat(popular.getpPrice());
+        txtTitleDescription.setText(products.getpFoodName());
+        txtDollarDescription.setText(products.getpPrice() + " $");
+        imgFoodDescription.setImageResource(products.getpImage());
+        price = Float.parseFloat(products.getpPrice());
+        products.setNumberOder(number);
+
 
         imgPlusDescription.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 number++;
-                price = Float.parseFloat(popular.getpPrice()) * number;
-                popular.setNumberOder(number);
+                price = Float.parseFloat(products.getpPrice()) * number;
+                products.setNumberOder(number);
                 txtNumberOderDescription.setText(number + "");
                 txtDollarDescription.setText(price + " $");
             }
@@ -64,8 +60,8 @@ public class DescriptionActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (number > 1) {
                     number--;
-                    popular.setNumberOder(number);
-                    price = Float.parseFloat(popular.getpPrice()) * number;
+                    products.setNumberOder(number);
+                    price = Float.parseFloat(products.getpPrice()) * number;
                     txtNumberOderDescription.setText(number + "");
                     txtDollarDescription.setText(price + " $");
                 }
@@ -75,10 +71,12 @@ public class DescriptionActivity extends AppCompatActivity {
         btnAddToCartDescription.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CartManager.instant().addNewProduct(popular);
+                CartManager.instant().addNewProduct(products);
                 Toast.makeText(DescriptionActivity.this, "added to cart", Toast.LENGTH_SHORT).show();
+                finish();
             }
         });
+
     }
 
     private void connect() {
